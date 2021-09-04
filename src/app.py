@@ -3,12 +3,15 @@ from flask_caching import Cache
 from werkzeug.wrappers import response
 
 app= Flask(__name__)
-cache=Cache(config={
-    'CACHE_TYPE': 'RedisCache',
-    'CACHE_REDIS_HOST':'0.0.0.0',
-    'CACHE_REDIS_PORT': 6379
+cache = Cache(config={
+    'DEBUG': True,
+    'CACHE_TYPE': 'SimpleCache',
+    'CACHE_DEFAULT_TIMEOUT':300
+    #'CACHE_REDIS_HOST':'127.0.0.1',#0.0.0.0
+    #'CACHE_REDIS_PORT': 6379
 }
 )
+
 posts = [
     {
         'Group_10_topic': 'Web Cache Poisoning',
