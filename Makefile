@@ -1,6 +1,6 @@
 # A sample Makefile to use make command to build, test and run the program
 # Guide: https://philpep.org/blog/a-makefile-for-your-dockerfiles/
-APP=isec3004.assignment
+APP=app.py
 
 all: build
 
