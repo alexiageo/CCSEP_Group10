@@ -16,11 +16,13 @@ COPY src .
 FROM python:3.8.2-alpine
 ENV PYTHONUNBUFFERED 1
 ENV FLASK_APP app.py
-#ENV FLASK_ENV development
-ENV PYTHONPATH="$PYTHONPATH:/dockerTest"
+ENV FLASK_ENV development
+#ENV PYTHONPATH="$PYTHONPATH:/dockerTest"
 # Create app directory
 WORKDIR /usr/src/app
 COPY --from=build /usr/src/app .
 COPY --from=build /root/.local /root/.local 
-EXPOSE 8080
+EXPOSE 8080 
+
 CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0" ]
+
