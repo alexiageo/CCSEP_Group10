@@ -1,7 +1,7 @@
 Steps to exploit:
 1. Open 'CCSEP_Group10' folder in terminal, type 'make build'
 
-2. Then type 'make run', when terminal indicate 'Listening at: http://0.0.0.0:8000,
+2. Then type 'make run', when terminal indicate 'Listening at: http://0.0.0.0:8000',
   open browser ,and enter 127.0.0.1:8000 to load the webpage
 
 3. Launch Burp Suite, leave intercept OFF
