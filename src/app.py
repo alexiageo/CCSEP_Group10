@@ -31,8 +31,8 @@ def hello_world():
     cache.set('count', 1, timeout=50)
     XFF = request.headers.get('X-Forwarded-Host', '127.0.0.1:8000')
     ### XFF prevention
-    ##if XFF != '127.0.0.1:8000':
-     ##   abort(403)
+    if XFF != '127.0.0.1:8000':
+    	   abort(403)
     @app.before_request
     def handle_before():
         count = cache.get('count') or 1
