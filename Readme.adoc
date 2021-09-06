@@ -24,9 +24,12 @@ Steps to exploit:
 
  
 Contribution Table:
-
   Chung Hei :Research,coding,docker file,presentation(Detection,Preventing)
+
   Songrang:Research,coding,slides(Impact,Real incident)
+  
   Xinhong:Research,coding,slides(Types of cache poisoning,conclusion)
+  
   Yuan:Research,coding(code contribution made final demo),slides(code demo and patching)
+  
   Alexia:Research,coding,slides(Background,vulnerability)
