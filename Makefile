@@ -6,7 +6,7 @@ build:
 	docker build --rm --tag=$(APP) .
 
 run:
-	docker run -p 127.0.0.1:8000:8000/tcp -it --rm $(APP)
+	docker run -p 127.0.0.1:5000:5000/tcp -it --rm $(APP)
 
 clean:
 	docker image rm $(APP)

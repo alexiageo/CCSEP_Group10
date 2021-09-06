@@ -21,5 +21,5 @@ ENV FLASK_APP app.py
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 USER secure_programming
-EXPOSE 8000
+EXPOSE 5000
 ENTRYPOINT ["./boot.sh"]
