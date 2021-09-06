@@ -1,0 +1,21 @@
+1. To run the Webpage-> make run
+2. Open Burp Suite - go to Proxy -turn Intercept off-select Open Browser
+3. type 127.0.0.1:8000 visit the webpage
+4. Now in Burp, turn Intercept on and refresh the webpage
+5. select Action and Send to repeater 
+6. select Send , Now you can see the Request and Response
+7. To attack the webpage add ?cd=123 to the GET request : GET /?cd=123 HTTP/1.1
+8. select Send until on the Response side the X-cache show : hit
+9. add a new line on the Request :X-Forwarded-Host: 127.0.0.1:8000/static
+10. select Send until X-cache show hit, turn Intercept off
+11. Now you can see the webpage will alert a sentence "unkey header hacking succeed"
+12. if not ,Repeat the follow :
+                      select Send unitl X-cache show hit
+                      refresh the wabpage.
+
+Contribution Table:
+   Desmond:Research,coding,docker file,presentation(Detection,Preventing)
+   Simon:Research,coding,slides(Impact,Real incident)
+   Eric:Research,coding,slides(Types of cache poisoning,conclusion)
+   Yuan:Research,coding(code contribution made final demo),slides(code demo and patching)
+   Alexia:Research,coding,slides(Background,vulnerability)
