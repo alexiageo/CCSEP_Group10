@@ -12,7 +12,7 @@ cache.init_app(app, config={'CACHE_TYPE': 'simple'})
 @cache.memoize(50)
 @app.after_request
 def add_response_header(response):
-    response.headers['X-Forwarded-Host']= '127.0.0.1:8000'
+    response.headers['X-Forwarded-Host']= '127.0.0.1:5000'
     response.headers['Cache-Control'] = 'public, '
     state = cache.get('X-Cache')
     response.headers['X-Cache'] = state
@@ -29,9 +29,9 @@ def hello_world():
     resp.headers["X-Cache"] = "miss"
     cache.set('X-Cache', 'miss',timeout=50)
     cache.set('count', 1, timeout=50)
-    XFF = request.headers.get('X-Forwarded-Host', '127.0.0.1:8000')
+    XFF = request.headers.get('X-Forwarded-Host', '127.0.0.1:5000')
     ### XFF prevention
-    if XFF != '127.0.0.1:8000':
+    if XFF != '127.0.0.1:5000':
     	   abort(403)
     @app.before_request
     def handle_before():
