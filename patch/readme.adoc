@@ -1,0 +1,4 @@
+To patch the vulnerability
+Copy the app.py in Patch folder and replace to one in src and make build
+There is a if loop in the patch file , after patched /static attack 
+will lead to  abort(403)
