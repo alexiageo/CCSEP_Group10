@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip curl gconf-service 
 RUN useradd -m secure_programming
 WORKDIR /home/secure_programming
 
-COPY cache_hack/ vulnerable_app/
+COPY src/ vulnerable_app/
 WORKDIR vulnerable_app/
 RUN chmod +x boot.sh
 
