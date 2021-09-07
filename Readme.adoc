@@ -22,12 +22,15 @@ Steps to exploit:
 
 10. Refresh the webpage, a pop-up window should be showed "unkey header hacking succeed"
 
+
+
+
+
 Contribution Table:
 
-  Alexia:Research,coding,slides(Background,vulnerability)
-  Chung Hei :Research,coding,docker file,presentation(Detection,Preventing)
-  Songrang:Research,coding,slides(Impact,Real incident)
-  Xinhong:Research,coding,slides(Types of cache poisoning,conclusion)
-  Yuan:Research,coding(code contribution made final demo),slides(code demo and patching)
-  
+  Alexia:    Research, slides(Background,vulnerability), coding, video editing
+  Chung Hei: Research, slides(Detection,Preventing), coding, docker file
+  Songrang:  Research, slides(Impact,Real incident), coding
+  Xinhong:   Research, slides(Types of cache poisoning,conclusion), coding
+  Yuan:      Research, slides(code demo and patching), coding (code contribution made final submission)
   
