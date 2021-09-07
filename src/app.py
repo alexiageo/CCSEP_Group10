@@ -1,5 +1,6 @@
 from flask import Flask,render_template,jsonify,make_response,request,abort
 from flask_caching import Cache
+import logging
 
 cache = Cache()
 app = Flask(__name__)
@@ -12,7 +13,7 @@ cache.init_app(app, config={'CACHE_TYPE': 'simple'})
 @cache.memoize(50)
 @app.after_request
 def add_response_header(response):
-    response.headers['X-Forwarded-Host']= '127.0.0.1:8000'
+    response.headers['X-Forwarded-Host']= '127.0.0.1:5000'
     response.headers['Cache-Control'] = 'public, '
     state = cache.get('X-Cache')
     response.headers['X-Cache'] = state
@@ -29,10 +30,12 @@ def hello_world():
     resp.headers["X-Cache"] = "miss"
     cache.set('X-Cache', 'miss',timeout=50)
     cache.set('count', 1, timeout=50)
-    XFF = request.headers.get('X-Forwarded-Host', '127.0.0.1:8000')
-    ### XFF prevention
-    if XFF != '127.0.0.1:8000':
-    	   abort(403)
+    XFF = request.headers.get('X-Forwarded-Host', '127.0.0.1:5000')
+    ## XFF prevention
+    app.logger.info('the XXF is %s' % XFF)
+    app.logger.info('the checker is %s' % str(XFF != '127.0.0.1:5000'))
+    if XFF != '127.0.0.1:5000':
+        abort(403)
     @app.before_request
     def handle_before():
         count = cache.get('count') or 1
@@ -41,7 +44,7 @@ def hello_world():
         count += 1
         cache.set('count', count, timeout=50)
 
-    ### Cookie prevention—— check Cookie
+    ### Cookie prevention
     # if request.cookies.get('text', 'Don') not in ['Don', 'Cookie cache poision']:
     #     return abort(403)
     return render_template('home.html', XFF=XFF, Cookie=request.cookies.get('text', 'Don'))
