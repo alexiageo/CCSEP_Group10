@@ -1,6 +1,25 @@
-To patch the vulnerability
+To patch the vulnerability:
 
 - make build
 - try to carry out the attack as laid out previously 
 - There is now an if loop in the patched app.py file
-    - after being patched, /static attack will lead to abort(403)
+    - after being patched, /static attack will lead to abort(403) and will show normal alert() behaviour (alert('this on load')) 
+
+Exploit steps are attached again below
+
+
+------------------------
+Steps to exploit:
+1. Open 'CCSEP_Group10' folder in terminal, type 'make build'
+2. Then type 'make run', terminal should return 'Listening at: http://0.0.0.0:5000'
+3. Launch Burp Suite, leave intercept OFF, press 'Open Browser' option (next to 'Action') within the same tab,
+   enter 127.0.0.1:5000 to load the webpage
+4. Refresh the webpage
+5. Go to HTTP history in Burp Suite, select the first GET request of 127.0.0.1:5000,
+   right click the selected request, select option 'Send to Repeater'
+6. Append '?cd=123' in Request header (CHANGE 'GET / HTTP/1.1' --> 'GET /?cd=123 HTTP/1.1')
+7. Press Send option until on the Response side the X-cache show 'miss'
+8. Append a new line 'X-Forwarded-Host: 127.0.0.1:5000/static', ATTENTION: make sure there are 2 NEW LINES below the script
+  otherwise the script won't work
+9. Press Send option again until the X-Cache show 'miss'
+10. Refresh the webpage, a pop-up window should be showed "unkey header hacking succeeded"
